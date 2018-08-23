@@ -261,7 +261,7 @@ float SVCNNLayer::relu(float x){
 float SVCNNLayer::relu1(float x)
 {
     float r =  fmin(fmax(x, 0), 6);
-    r = r/2;
+    r = r/6;
     return r;
 }
 float SVCNNLayer::dRelu1(float x)
@@ -272,7 +272,7 @@ float SVCNNLayer::dRelu1(float x)
     }
     else
     {
-        return 1.0/2;
+        return 1.0/6;
     }
 }
 float SVCNNLayer::tanh(float x)

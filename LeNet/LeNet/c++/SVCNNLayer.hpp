@@ -305,7 +305,7 @@ public:
                     r = net[m][i][j];
                     if(index == 4)
                     {
-                        r = r/120.0;
+//                        r = r/120.0;
                     }
                     r = activate(r);
                     out[m][i][j] = r;
@@ -341,7 +341,7 @@ public:
                 {
 //                    printf("index:%d",index);
 //                    printf("");
-                    rd = 1;
+                    rd = 11;
                 }
                 r +=inData[frowRow+i][fromCol+i]*w[featureIndex][inputLayerIndex][i][j];
             }
@@ -499,16 +499,16 @@ public:
     int maxPosition()
     {
         int v = 0;
-        double max = 0;
+        double max = 9999;
         int mi =0,mj=0,mk=0;
 //        printf("\n");
         for (int i =0; i<featureMapCount; i++) {
             for (int j =0; j<rowOfOut; j++) {
                 for (int k=0; k < colOfOut; k++) {
                     double o = out[i][j][k];
-                    if(max < o)
+                    if(max > fabs(o))
                     {
-                        max = o;
+                        max = fabs(o);
                         mi = i;
                         mj = j;
                         mk = k;
@@ -879,13 +879,38 @@ public:
                             
                             if(isnan(tdelta))
                             {
-                                printf("%s%d Error",__func__,__LINE__);
+                                tdelta = 11;
+                                printf("%s%d Error\n",__func__,__LINE__);
                             }
-                            tdelta = tdelta *dnet_dw[m][p][j][i];
+                            
+                            float dnwv = dnet_dw[m][p][j][i];
+                            
+                            if(isnan(dnwv))
+                            {
+                                printf("%s%d Error\n",__func__,__LINE__);
+                                dnwv = 1;
+                                
+                            }
+                            if(isinf(dnwv))
+                            {
+                                printf("%s%d Error\n",__func__,__LINE__);
+                                dnwv = 1;
+                                
+                            }
+                            
+                            
+                            if(isinf(tdelta))
+                            {
+                                printf("%s%d Error\n",__func__,__LINE__);
+                                tdelta = 1;
+                                
+                            }
+                            tdelta = tdelta * dnwv;
                             
                             if(isnan(tdelta))
                             {
-                                printf("%s%d Error",__func__,__LINE__);
+                                printf("%s%d Error\n",__func__,__LINE__);
+                                tdelta = 1;
                             }
                             if(index == debugLayerIndex && debugDwv)
                             {
@@ -893,12 +918,14 @@ public:
                                 {
                                     
                                     printf("%d [%d][%d][%d][%d] delta:%17f\n",index,m,p,i,j,tdelta);
+                                    tdelta = 11;
                                 }
                             }
                             
                             if(isnan(tdelta))
                             {
                                  printf("%s%d Error",__func__,__LINE__);
+                                tdelta = 11;
                             }
                             
                             dw[m][p][j][i] = tdelta;///(featureMapCount*rowOfOut*colOfOut)
@@ -978,20 +1005,20 @@ public:
                     if(isnan(eo))
                     {
 //                        printf("%s%d Error",__func__,__LINE__);
-                        eo = 0;
+                        eo = 110;
                     }
                     float on = dhout_dnet[p];
                     if(isnan(on))
                     {
 //                        printf("%s%d Error",__func__,__LINE__);
-                        on = 0;
+                        on = 110;
                     }
                     float rd = eo*on;
                     
                     if(isnan(rd))
                     {
 //                        printf("%s%d Error",__func__,__LINE__);
-                        rd = 0;
+                        rd = 110;
                     }
                     delta[p] = rd;
                     if(isnan(delta[p]) || delta[p] > 20)

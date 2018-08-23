@@ -261,7 +261,58 @@ static NSString *cache_path()
     
     return resultUIImage;
 }
-+(UIImage*)arrayToImage:(uint8_t*)array with:(int)imageH and:(int)imageW
++(UIImage*)floatArrayToImage:(const float*)array withH:(int)imageH andW:(int)imageW
+{
+    
+    size_t      bytesPerRow = imageW * 4;
+    
+    
+    // 创建context
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    uint32_t *imageBuf;
+    imageBuf = (uint32_t *)malloc(imageW * imageH*4);
+    
+    ColorARGB *ptr;
+    for (int row = 0; row < imageH; row++) {
+        
+        
+        
+        for (int col =0; col < imageW; col++) {
+            
+            
+            float v = array[row*imageW+col]*255;
+            
+            
+            NSInteger pixlPos = row*imageW + col;
+            uint32_t *pCurPixel =  &imageBuf[pixlPos];
+            ptr = (ColorARGB *)pCurPixel;
+            ptr->b = v;
+            ptr->g = v;
+            ptr->r = v;
+            ptr->a = 255;
+            
+            
+        }
+    }
+    
+    // 将内存转成image
+    CGDataProviderRef dataProvider = CGDataProviderCreateWithData(NULL, imageBuf, bytesPerRow * imageH,ProviderReleaseData);
+    CGImageRef imageRef = CGImageCreate(imageW, imageH, 8, 32, bytesPerRow, colorSpace,kCGImageAlphaLast | kCGBitmapByteOrder32Little, dataProvider,NULL, true, kCGRenderingIntentDefault);
+    
+    CGDataProviderRelease(dataProvider);
+    
+    UIImage* resultUIImage = [UIImage imageWithCGImage:imageRef];
+    
+    // 释放
+    CGImageRelease(imageRef);
+    //    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    
+    
+    return resultUIImage;
+}
++(UIImage*)arrayToImage:(uint8_t*)array withH:(int)imageH andW:(int)imageW
 {
 
     size_t      bytesPerRow = imageW * 4;

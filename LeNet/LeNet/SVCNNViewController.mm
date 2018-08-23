@@ -148,7 +148,16 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
         
         
         memset(tlist[0], 0, 10*sizeof(float));
-        tlist[0][v] = 1.0;
+        for (int i = 0; i< 10; i++) {
+            if(i == v)
+            {
+                 tlist[0][i] = 0.0;
+            }
+            else
+            {
+                tlist[0][i] = 1.0;
+            }
+        }
         inputData[0] = new float*[inpuRow];
         for (int i = 0; i < inpuRow; i++) {
             inputData[0][i] = new float[inpuCol];
@@ -191,6 +200,7 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
     self.v2Gridview.dataList = @[@"0",@"1",@"2",@"3",@"4",@"5"];
     self.v3Gridview.dataList = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15"];
     self.v4Gridview.dataList = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15"];
+    self.v5Gridview.col = 10;
     self.v5Gridview.dataList = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",
                                  @"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",
                                  @"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",
@@ -203,6 +213,7 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
                                  @"91",@"92",@"93",@"94",@"95",@"96",@"97",@"98",@"99",@"100",
                                  @"101",@"102",@"103",@"104",@"105",@"106",@"107",@"108",@"109",@"110",
                                  @"111",@"112",@"113",@"114",@"115",@"116",@"117",@"118",@"119",];
+    self.v6Gridview.col = 7;
     self.v6Gridview.dataList = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",
                                  @"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",
                                  @"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",
@@ -221,7 +232,7 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
     
     inputData = NULL;
     tlist = NULL;
-    self.trainingCountTextField.text = @"1"; // count of training cases
+    self.trainingCountTextField.text = @"2"; // count of training cases
     self.trainingCountTextField.enabled = NO;
     self.trainLoopTextfield.text = @"1"; // count of loop
     self.indexTextfield.text = @"-1";//  < 0 means no log
@@ -410,6 +421,10 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
             runOnMainQueueWithoutDeadlocking(^{
                 UIImageView* imageView = (UIImageView*)[self.v7Gridview viewOfName:iName];
                 imageView.image = image;
+                
+//                UIImage* image = [UIImage floatArrayToImage:data withH:12 andW:7];
+//
+//                self.L6ImageView.image = image;
             });
             
             

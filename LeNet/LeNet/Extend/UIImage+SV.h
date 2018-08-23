@@ -12,7 +12,8 @@
 
 @interface UIImage (SV)
 -(UIImage*)matrixToImage:(NSArray*)matrixArray;
-+(UIImage*)arrayToImage:(uint8_t*)array with:(int)imageH and:(int)imageW;
++(UIImage*)floatArrayToImage:(const float*)array withH:(int)imageH andW:(int)imageW;
++(UIImage*)arrayToImage:(uint8_t*)array withH:(int)imageH andW:(int)imageW;
 +(UIImage*)matrixToImage:(const float**)array withH:(int)imageH andW:(int)imageW;
 + (UIImage *)getImageWithUrlStringForImage:(NSString *)imageString;
 +(UIImage*) GetSavedImageWithName:(NSString*) aFileName;

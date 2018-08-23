@@ -57,7 +57,7 @@ public:
         countOfLayer = 7;
         layers[0] = new SVCNNLayer(32,32,1,6,5,28,28,1,NetTypeConvolutions);// rowofIn + slicestep = rowOfout*slicestep + featuresize
         layers[0]->index = 0;
-        layers[0]->activeStyle = ActiveStyleRelu1;
+        layers[0]->activeStyle = ActiveStyleRelu6;
         layers[0]->countOfCase = countOfcase;
         
         layers[1] = new SVCNNLayer(28,28,6,6,2,14,14,2,NetTypeSubsampling);// 24 + 2 = 12 * 2 + 2
@@ -67,7 +67,7 @@ public:
         
         layers[2] = new SVCNNLayer(14,14,6,16,5,10,10,1,NetTypeConvolutions);// sliceStep = (rowOfIn - featureSize )/(rowOfOut -1);
         layers[2]->index = 2;
-        layers[2]->activeStyle = ActiveStyleRelu1;
+        layers[2]->activeStyle = ActiveStyleRelu6;
         layers[2]->countOfCase = countOfcase;
         
         layers[3] = new SVCNNLayer(10,10,16,16,2,5,5,2,NetTypeSubsampling);
@@ -82,12 +82,12 @@ public:
         
         layers[5] = new SVCNNLayer(1,1,120,84,1,1,1,1,NetTypeFullconnection);
         layers[5]->index = 5;
-        layers[5]->activeStyle = ActiveStyleRelu1;
+        layers[5]->activeStyle = ActiveStyleRelu6;
         layers[5]->countOfCase = countOfcase;
         
         layers[6] = new SVCNNLayer(1,1,84,10,1,1,1,1,NetTypeFullconnection);
         layers[6]->index = 6;
-        layers[6]->activeStyle = ActiveStyleRelu;
+        layers[6]->activeStyle = ActiveStyleRelu6;
         layers[6]->countOfCase = countOfcase;
         
         trainingdataList = NULL;
@@ -262,11 +262,11 @@ public:
             
             float *target = targetdataList[0];// targetdataList[c];
             
-            
+            printf("Target value:\t");
             for(int i = 0;i<10;i++)
             {
-                if( target[i] > 0 )
-                    printf("Target value:%d\t",i);
+                if( target[i] < 1 )
+                    printf("%d(%f)\t",i,target[i]);
             }
 //            printf("over \n");
             dataset(input, target);

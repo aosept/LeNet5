@@ -1,6 +1,8 @@
 # LeNet5
 Implement of Lenet5  in c++ for iOS. 
 
+Relu6 for all layers is great!
+
 The purpose of this project is to help iOS developer to learn and understand machine learning theory and algorithm.
 
 And the training process is visible.

@@ -232,7 +232,7 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
     
     inputData = NULL;
     tlist = NULL;
-    self.trainingCountTextField.text = @"2"; // count of training cases
+    self.trainingCountTextField.text = @"3"; // count of training cases
     self.trainingCountTextField.enabled = NO;
     self.trainLoopTextfield.text = @"1"; // count of loop
     self.indexTextfield.text = @"-1";//  < 0 means no log

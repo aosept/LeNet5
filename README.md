@@ -24,4 +24,4 @@ i used to think bias of neural network is not important, there are already thous
 so i did not implement Lenet with learnable bias, just has a fixed value 0.5. 
 So the result of leaning is very bad, there no different between feature map, and at last layers there are no change according the input data. I was so confused about my code, after many times code review, paper review, and code rewrite, the network can learn well with 2 cases. 
 
-It not good yet, with a flash in my brain, i realised, it needs bias to make the feature maps became different, so I rewrite the code related with bias, every feature map has a independent trainable bias, every thing became normal, the speed of learning is implement, the result is great, until now I understand the important of bias and how does it works.
+It not good yet, with a flash in my brain, i realised, it needs bias to make the feature maps became different, so I rewrite the code related with bias, every feature map has a independent trainable bias, every thing became normal, the speed of learning is increased, the result is great, until now I understand the important of bias and how does it works.

@@ -32,21 +32,27 @@ SVCNNLayer::SVCNNLayer(int _rowOfIn,int _colOfIn,int _layerCountOfIn,int _featur
     dnet_dw = new float***[featureMapCount];
     dw = new float***[featureMapCount];
     finalDw = new float***[featureMapCount];
-    
+    b = new float*[featureMapCount];
+    db = new float*[featureMapCount];
+    finaldb= new float*[featureMapCount];
         for (int k = 0; k < featureMapCount; k++) {
             
             w[k] = new float**[layerCountOfIn];
             dnet_dw[k] = new float**[layerCountOfIn];
             dw[k] = new float**[layerCountOfIn];
             finalDw[k] = new float**[layerCountOfIn];
-            
+            b[k] = new float[layerCountOfIn];
+            db[k] = new float[layerCountOfIn];
+            finaldb[k] = new float[layerCountOfIn];
             for (int m = 0; m < layerCountOfIn; m++) {
                 
                 w[k][m] = new float*[featureSize];
                 dnet_dw[k][m] = new float*[featureSize];
                 dw[k][m] = new float*[featureSize];
                 finalDw[k][m] = new float*[featureSize];
-                
+                b[k][m] = uniform(0.01, 0.9);
+                db[k][m] = 0;
+                finaldb[k][m] = 0;
                 for (int i = 0; i < featureSize; i++) {
                     
                     w[k][m][i] = new float[featureSize];
@@ -67,7 +73,7 @@ SVCNNLayer::SVCNNLayer(int _rowOfIn,int _colOfIn,int _layerCountOfIn,int _featur
    
     
     
-    b = 0.05;
+    
     
     net = new float**[featureMapCount];
     for (int i = 0; i < featureMapCount; i++) {

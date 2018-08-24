@@ -166,8 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				0F8BF918212E48DA00A74C09 /* SVCNNNetWork.cpp */,
-				0F8BF919212E48DA00A74C09 /* SVCNNLayer.cpp */,
 				0F8BF91A212E48DA00A74C09 /* SVCNNNetWork.hpp */,
+				0F8BF919212E48DA00A74C09 /* SVCNNLayer.cpp */,
 				0F8BF91B212E48DA00A74C09 /* SVCNNLayer.hpp */,
 			);
 			name = "c++";

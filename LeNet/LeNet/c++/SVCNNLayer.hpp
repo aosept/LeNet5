@@ -64,7 +64,9 @@ public:
     float ****w;         //5*5 or 4*4
     float ***net;       //24*24*6
     float ***out;       //24*24*6
-    
+    float **b;
+    float **db;
+    float **finaldb;
     float *dETotal_dOut;
     float *dhout_dnet;
     float ****dnet_dw;
@@ -73,7 +75,7 @@ public:
     float ****finalDw;
     float *delta;
 
-    float b;
+
     SVCNNLayer()
     {
         
@@ -202,7 +204,7 @@ public:
                     r += inData[i][0][0]*w[m][i][0][0];
             }
             r = r/layerCountOfIn;
-            r = r + b;
+            r = r + b[m][0];
             net[m][0][0] = r;
             r = activate(r);
             out[m][0][0] = r;
@@ -346,7 +348,7 @@ public:
                 r +=inData[frowRow+i][fromCol+i]*w[featureIndex][inputLayerIndex][i][j];
             }
         }
-        r = r + b;
+        r = r + b[featureIndex][inputLayerIndex];
         return r;
     }
     void dnetdWvalue(int featureIndex,int inputLayerIndex, float** inData,int frowRow,int fromCol)
@@ -754,7 +756,21 @@ public:
         for (int m = 0; m < featureMapCount; m++) {
             for (int p = 0; p < countOflayer; p++){
 //                int layerIndexNumber = layerIndex[p];
+                float dbv = db[m][p];
+                dbv = dbv/countOfCase;
+                if(isnan(dbv))
+                {
+                    printf("");
+                    dbv = 0.5;
+                }
                 
+                if(isinf(dbv))
+                {
+                    printf("");
+                    dbv = 0.5;
+                }
+                float fdbv = finaldb[m][p];
+                finaldb[m][p] = fdbv + dbv;
                 for (int i = 0; i<featureSize; i++) {
                     for (int j =0; j<featureSize; j++) {
                         float  dwv = dw[m][p][j][i];
@@ -805,6 +821,11 @@ public:
         
         for (int k = 0; k<featureMapCount; k++) {
             for(int m = 0; m < countOflayer; m++){
+                float fdbv = finaldb[k][m];
+                fdbv = fdbv*step;
+                b[k][m] = b[k][m] - fdbv;
+                finaldb[k][m] = 0;
+                db[k][m] = 0;
                 for (int j = 0; j<featureSize ; j++) {
                     for (int i = 0; i < featureSize; i++) {
                         float dv  = 0;
@@ -905,6 +926,7 @@ public:
                                 tdelta = 1;
                                 
                             }
+                            db[m][p] = tdelta;
                             tdelta = tdelta * dnwv;
                             
                             if(isnan(tdelta))

@@ -261,17 +261,19 @@ public:
             }
             
             float *target = targetdataList[0];// targetdataList[c];
-            
-            printf("Target value:\t");
-            for(int i = 0;i<10;i++)
-            {
-                if( target[i] < 1 )
-                    printf("%d(%f)\t",i,target[i]);
-            }
-//            printf("over \n");
+//            if (didRecieveDataCallback != NULL) {
+//                didRecieveDataCallback(callbackNSObject,"countOf",NULL,c);
+//            }
+//            printf("Target value:\t");
+//            for(int i = 0;i<10;i++)
+//            {
+//                if( target[i] < 1 )
+//                    printf("%d(%f)\t",i,target[i]);
+//            }
+
             dataset(input, target);
             run();
-            printf("predictValue:%d\n",predictValue());
+//            printf("predictValue:%d\n",predictValue());
             subDelta += training();
             
             
@@ -296,9 +298,9 @@ public:
         float delta =  1;
         while (loop < trainloopCount && delta > sheldhold)
         {
-            if(loop > 100)
+            if(loop > 50)
             {
-//                step = step*1.0001;
+                step = step*1.0001;
             }
             else
             {
@@ -381,7 +383,7 @@ public:
                 layer->ProductWith(prelayer->out);//,prelayer->rowOfOut,prelayer->colOfOut
             }
             
-            if(m < 7)
+            if( m < 7)
             {
                 SVCNNLayer* layer =  layers[m];
                 for(int i = 0;i< layer->featureMapCount;i++)

@@ -14,17 +14,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 #import "CNN.h"
 
 @interface CNN ()
@@ -359,17 +348,13 @@
 }
 
 
--(UIImageView*)L6ImageView
+-(UIButton*)resetButton
 {
-    if (_L6ImageView == nil) {
-        _L6ImageView = [UIImageView new];
-        _L6ImageView.backgroundColor = [UIColor whiteColor];
-        _L6ImageView.layer.borderWidth = 0;
-        _L6ImageView.layer.borderColor = [UIColor clearColor].CGColor;
+    if (_resetButton == nil) {
+        _resetButton = [self buildButtonWith:@"resetButton" andAction:@selector(buttonDidClicked:)];
     }
-    return _L6ImageView;
+    return _resetButton;
 }
-
 
 -(UIScrollView*)scrollView
 {
@@ -406,8 +391,6 @@
     
     [self.scrollView addSubview:self.runButton];
     
-    [self.scrollView addSubview:self.L6ImageView];
-    
     [self.scrollView addSubview:self.v1GridView];
     
     [self.scrollView addSubview:self.v2Gridview];
@@ -427,6 +410,8 @@
     [self.scrollView addSubview:self.v7Label];
     
     [self.scrollView addSubview:self.trainingCountTextField];
+    
+    [self.scrollView addSubview:self.resetButton];
     
     [self.scrollView addSubview:self.v14Label];
     
@@ -639,6 +624,8 @@
     
     self.logTextView.textColor = [UIColor redColor];
     
+    [self.resetButton setTitle:@"Reset" forState:UIControlStateNormal];
+    
 }
 
 -(void)viewDidLayoutSubviews
@@ -676,8 +663,6 @@
     CGFloat    runButton_yInterval = 1.00*rateH;
     CGFloat    runButton_Width = 60.90*rate;
     CGFloat    runButton_Height = 31.00*rateH;
-    CGFloat    L6ImageView_xInterval = 10.00*rate;
-    CGFloat    L6ImageView_Width = 31.00*rate;
     CGFloat    v1GridView_yInterval = 3.00*rateH;
     CGFloat    v1GridView_Width = 375.00*rate;
     CGFloat    v1GridView_Height = 60.00*rateH;
@@ -704,7 +689,9 @@
     CGFloat    v7Label_Height = 20.00*rateH;
     CGFloat    trainingCountTextField_xInterval = 14.00*rate;
     CGFloat    trainingCountTextField_yInterval = 2.00*rateH;
-    CGFloat    v14Label_xInterval = 41.00*rate;
+    CGFloat    resetButton_xInterval = 10.00*rate;
+    CGFloat    resetButton_Width = 30.00*rate;
+    CGFloat    v14Label_xInterval = 1.00*rate;
     CGFloat    v14Label_yInterval = 2.00*rateH;
     CGFloat    v14Label_Width = 54.40*rate;
     CGFloat    derrdoutSwitch_xInterval = 10.00*rate;
@@ -758,11 +745,6 @@
     w = runButton_Width;
     h = runButton_Height;
     self.runButton.frame = CGRectMake(x, y, w, h);
-    
-    xInterval = L6ImageView_xInterval;
-    x =  x + w + xInterval;
-    w = L6ImageView_Width;
-    self.L6ImageView.frame = CGRectMake(x, y, w, h);
     
     yInterval = v1GridView_yInterval;
     x =  left;
@@ -828,6 +810,11 @@
     x =  x + w + xInterval;
     y =  y + yInterval;
     self.trainingCountTextField.frame = CGRectMake(x, y, w, h);
+    
+    xInterval = resetButton_xInterval;
+    x =  x + w + xInterval;
+    w = resetButton_Width;
+    self.resetButton.frame = CGRectMake(x, y, w, h);
     
     yInterval = v14Label_yInterval;
     xInterval = v14Label_xInterval;
@@ -1024,12 +1011,33 @@
         }
     }
     
+    if(button == self.resetButton)
+    {
+        NSLog(@"self.resetButton is clicked");
+        [self resetButtonClicked];
+        
+        if([self.delegate respondsToSelector:@selector(buttonOfCNN:DidClickedWithName:)])
+        {
+            [self.delegate buttonOfCNN:self DidClickedWithName:@"resetButton"];
+        }
+        else
+        {
+            NSLog(@"Method buttonOfCNN:self DidClickedWithName: not implemented");
+        }
+    }
+    
 }
 
 -(void)runButtonClicked
 {
     
     NSLog(@"self.runButton is clicked");
+}
+
+-(void)resetButtonClicked
+{
+    
+    NSLog(@"self.resetButton is clicked");
 }
 
 -(void)refreshFromDiction:(NSDictionary*)dic
@@ -1283,6 +1291,8 @@
         return YES;
 }
 @end
+
+
 
 
 

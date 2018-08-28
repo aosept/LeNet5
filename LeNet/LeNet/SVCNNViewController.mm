@@ -14,6 +14,13 @@
 #import "SVGridView.h"
 #import "UIImage+SV.h"
 
+
+static void logMessage(const void*callback,const int index,const char *message)
+{
+    SVCNNViewController* vc = (__bridge SVCNNViewController*)callback;
+//    [vc dataOfindex:dataIndex];
+    
+}
 static void trainData(const void*callback,const int dataIndex)
 {
     SVCNNViewController* vc = (__bridge SVCNNViewController*)callback;
@@ -97,37 +104,7 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
         tlist = NULL;
     }
 }
-//-()old
-//{
-//    float *** inputData = new float**[trainingCount];
-//    float **tlist = new float*[trainingCount];
-//
-//
-//
-//    for (int k = 0; k < trainingCount; k++) {
-//
-//        tlist[k] = new float[outValue];
-//
-//        uint8_t* imagedata = [self.decoder imageDataOfIndex:k];
-//        int v = [self.decoder labelDataOfIndex:k];
-//        NSLog(@"%d\n",v);
-//
-//
-//        memset(tlist[k], 0, 10*sizeof(float));
-//        tlist[k][v] = 1.0;
-//        inputData[k] = new float*[28];
-//        for (int i = 0; i < inpuRow; i++) {
-//            inputData[k][i] = new float[28];
-//            for (int j = 0; j<inpuCol; j++) {
-//                inputData[k][i][j] = imagedata[i*28 + j]/255.0;
-//            }
-//
-//
-//        }
-//
-//    }
-//
-//}
+
 -(void)dataOfindex:(int)dataIndex
 {
     @autoreleasepool {
@@ -232,8 +209,8 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
     
     inputData = NULL;
     tlist = NULL;
-    self.trainingCountTextField.text = @"3"; // count of training cases
-    self.trainingCountTextField.enabled = NO;
+    self.trainingCountTextField.text = @"10"; // count of training cases
+//    self.trainingCountTextField.enabled = NO;
     self.trainLoopTextfield.text = @"1"; // count of loop
     self.indexTextfield.text = @"-1";//  < 0 means no log
     network = NULL;
@@ -280,6 +257,7 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
     self->network->setCountOfcase(trainingCount);
     self->network->didRecieveDataCallback = didRecieveData;
     self->network->trainDataProvider = trainData;
+    self->network->loginfo = logMessage;
     self->network->callbackNSObject = (__bridge void*)self;
 }
 -(void)dealloc
@@ -306,7 +284,7 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
 -(void)goNNN
 {
     
-    network->trainWithMultiDataCount(trainLoop, 0.001,0.5);
+    network->trainWithMultiDataCount(trainLoop, 0.001,0.02);
     network->showResult();
     
     displayStep = 1;
@@ -433,6 +411,12 @@ static void didRecieveData_t(const void*callback,const char *key, const float** 
     }
 }
 #pragma mark - deletage
+-(void)resetButtonClicked
+{
+    delete network;
+    [self autoencoderInit];
+    NSLog(@"self.resetButton is clicked");
+}
 -(void)updateSVGridView:(SVGridView*)gridView WithDic:(NSDictionary*)dic
 {
     

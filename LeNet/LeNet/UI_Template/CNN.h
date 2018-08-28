@@ -12,6 +12,7 @@
 @protocol SVGridViewDelegate;
 
 
+
 @protocol CNNDelegate <NSObject>
 
 -(void)updateCNN:(CNN*)vc WithDic:(NSDictionary*)dic;
@@ -86,7 +87,7 @@
 
 @property (nonatomic,strong) SVGridView * v7Gridview;
 
-@property (nonatomic,strong) UIImageView * L6ImageView;
+@property (nonatomic,strong) UIButton * resetButton;
 
 @property (nonatomic,strong) UIScrollView * scrollView;
 -(void)refreshFromDiction:(NSDictionary*)dic;

@@ -41,7 +41,7 @@ public:
     float sheldhold;
     bool isTraining;
     float sliceStep;
-    void (*loginfo)(const void* callback,const char* logstring);
+    void (*loginfo)(const void* callback,const int index,const char* logstring);
     void (*didRecieveDataCallback)(const void* callback,const char* key, const float** value, float delta);
     void (*trainDataProvider)(const void*callback,const int dataIndex);
     void *callbackNSObject;
@@ -136,30 +136,15 @@ public:
             printf("\n");
         }
     }
-//    void dataListClear()
-//    {
-//        if(trainingdataList != NULL)
-//        {
-//            
-//            for (int i = 0; i < 28; i++) {
-//                delete [] trainingdataList[0][i];
-//            }
-//            delete [] trainingdataList[0];
-//            delete [] trainingdataList;
-//            
-//            trainingdataList = NULL;
-//        }
-//        
-//        
-//        if(targetdataList != NULL)
-//        {
-//            delete [] targetdataList[0];
-//            delete [] targetdataList;
-//            
-//            trainingdataList = NULL;
-//            targetdataList = NULL;
-//        }
-//    }
+    void showLog(int index,char* message)
+    {
+        if (loginfo != NULL) {
+            if(message != NULL)
+            {
+                loginfo(callbackNSObject,index,message);
+            }
+        }
+    }
     void dataListSet(float ***_trainingData,float **_targetData)
     {
         
@@ -298,18 +283,18 @@ public:
         float delta =  1;
         while (loop < trainloopCount && delta > sheldhold)
         {
-            if(loop > 50)
+            if(loop > 2)
             {
-                step = step*1.0001;
+                step = step*1.001;
             }
             else
             {
                
             }
             
-            if(step > 50)
+            if(step > 100)
             {
-                step = 50;
+                step = 100;
             }
             delta = trainWithMultiData();
             

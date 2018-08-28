@@ -36,6 +36,7 @@ enum ActiveStyle
     ActiveStyleRelu6,
     ActiveStyleRelu1,
     ActiveStyleTanh,
+    ActiveStyleLeakyRelu6,
     
 };
 
@@ -113,6 +114,8 @@ public:
     float dactivate(float x);
     float relu6(float x);
     float relu(float x);
+    float leakyRelu6(float x);
+    float dLeakyRelu6(float x);
     float relu1(float x);
     float dRelu1(float x);
     float uniform(float min, float max);
@@ -823,7 +826,22 @@ public:
             for(int m = 0; m < countOflayer; m++){
                 float fdbv = finaldb[k][m];
                 fdbv = fdbv*step;
+                if(isnan(fdbv) || isinf(fdbv))
+                {
+                    printf("");
+                    fdbv = 0;
+                }
+                
                 b[k][m] = b[k][m] - fdbv;
+                
+                float bv = b[k][m];
+                
+                if(isnan(bv) || isinf(bv))
+                {
+                    printf("");
+                    bv = uniform(0.1, 0.9);
+                    b[k][m] = bv;
+                }
                 finaldb[k][m] = 0;
                 db[k][m] = 0;
                 for (int j = 0; j<featureSize ; j++) {

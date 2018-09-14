@@ -50,7 +50,7 @@ SVCNNLayer::SVCNNLayer(int _rowOfIn,int _colOfIn,int _layerCountOfIn,int _featur
                 dnet_dw[k][m] = new float*[featureSize];
                 dw[k][m] = new float*[featureSize];
                 finalDw[k][m] = new float*[featureSize];
-                b[k][m] = uniform(0.01, 0.9);
+                b[k][m] = uniform(-1.0, 1.0);
                 db[k][m] = 0;
                 finaldb[k][m] = 0;
                 for (int i = 0; i < featureSize; i++) {
@@ -209,6 +209,10 @@ float SVCNNLayer::activate(float x)
     {
         return relu1(x);
     }
+    else if(activeStyle == ActiveStyleLeakyRelu6)
+    {
+        return leakyRelu6(x);
+    }
     else if(activeStyle == ActiveStyleSigmoid)
     {
         return sigmoid(x);
@@ -242,6 +246,10 @@ float SVCNNLayer::dactivate(float x)
     {
         return dsigmoid(x);
     }
+    else if(activeStyle == ActiveStyleLeakyRelu6)
+    {
+        return dLeakyRelu6(x);
+    }
     else if(activeStyle == ActiveStyleTanh)
     {
         return dtanh(x);
@@ -251,6 +259,31 @@ float SVCNNLayer::dactivate(float x)
         return dsigmoid(x);
     }
     
+}
+float SVCNNLayer::leakyRelu6(float x)
+{
+    float r =  fmin(fmax(x, 0), 6);
+    if(r == 0)
+    {
+        r = x/10.0;
+    }
+    return r;
+}
+float SVCNNLayer::dLeakyRelu6(float x)
+{
+    
+    if(x == 0)
+    {
+        return 1/10.0;
+    }
+    else if(x == 6)
+    {
+           return 0;
+    }
+    else
+    {
+        return 1.0;
+    }
 }
 float SVCNNLayer::relu6(float x){
     

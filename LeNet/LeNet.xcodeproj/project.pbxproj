@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0F0384214B8011005033E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0F0383214B8011005033E7 /* AppDelegate.m */; };
+		0F0F0387214B8011005033E7 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F0F0386214B8011005033E7 /* ViewController.mm */; };
+		0F0F0389214B8013005033E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F0F0388214B8013005033E7 /* Assets.xcassets */; };
+		0F0F038C214B8013005033E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F0F038A214B8013005033E7 /* Main.storyboard */; };
+		0F0F038F214B8013005033E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0F038E214B8013005033E7 /* main.m */; };
+		0F597130214B84B200E7954B /* SVAnalysisGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59712C214B84B200E7954B /* SVAnalysisGraphView.m */; };
+		0F597131214B84B200E7954B /* SVBasicGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F59712D214B84B200E7954B /* SVBasicGraphView.m */; };
+		0F597132214B8D0B00E7954B /* SVCNNNetWork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BF918212E48DA00A74C09 /* SVCNNNetWork.cpp */; };
+		0F597133214B8D1900E7954B /* SVCNNLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BF919212E48DA00A74C09 /* SVCNNLayer.cpp */; };
+		0F597137214B8F1300E7954B /* SVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F597136214B8F1300E7954B /* SVUtils.m */; };
+		0F59713A214B91B100E7954B /* NSImage+SV.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F597139214B91B100E7954B /* NSImage+SV.m */; };
+		0F59713B214BB1C200E7954B /* train-labels.idx1-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 0F8BF91E212E48DA00A74C09 /* train-labels.idx1-ubyte */; };
+		0F59713C214BB1C500E7954B /* train-images.idx3-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 0F8BF91F212E48DA00A74C09 /* train-images.idx3-ubyte */; };
+		0F59713D214BB1C800E7954B /* t10k-labels.idx1-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 0F8BF921212E48DA00A74C09 /* t10k-labels.idx1-ubyte */; };
+		0F59713E214BB1CA00E7954B /* t10k-images.idx3-ubyte in Resources */ = {isa = PBXBuildFile; fileRef = 0F8BF922212E48DA00A74C09 /* t10k-images.idx3-ubyte */; };
+		0F59713F214BB1F700E7954B /* MnistDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BF91D212E48DA00A74C09 /* MnistDecoder.m */; };
 		0F8BF8F0212E461B00A74C09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BF8EF212E461B00A74C09 /* AppDelegate.m */; };
 		0F8BF8F3212E461C00A74C09 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BF8F2212E461C00A74C09 /* ViewController.m */; };
 		0F8BF8F6212E461C00A74C09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F8BF8F4212E461C00A74C09 /* Main.storyboard */; };
@@ -32,6 +48,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F0F0380214B8011005033E7 /* LenetMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LenetMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F0F0382214B8011005033E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0F0F0383214B8011005033E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0F0F0385214B8011005033E7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0F0F0386214B8011005033E7 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		0F0F0388214B8013005033E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0F0F038B214B8013005033E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0F0F038D214B8013005033E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F0F038E214B8013005033E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0F0F0390214B8014005033E7 /* LenetMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LenetMac.entitlements; sourceTree = "<group>"; };
+		0F59712C214B84B200E7954B /* SVAnalysisGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAnalysisGraphView.m; sourceTree = "<group>"; };
+		0F59712D214B84B200E7954B /* SVBasicGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVBasicGraphView.m; sourceTree = "<group>"; };
+		0F59712E214B84B200E7954B /* SVBasicGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVBasicGraphView.h; sourceTree = "<group>"; };
+		0F59712F214B84B200E7954B /* SVAnalysisGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAnalysisGraphView.h; sourceTree = "<group>"; };
+		0F597135214B8F1300E7954B /* SVUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVUtils.h; sourceTree = "<group>"; };
+		0F597136214B8F1300E7954B /* SVUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVUtils.m; sourceTree = "<group>"; };
+		0F597138214B91B100E7954B /* NSImage+SV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+SV.h"; sourceTree = "<group>"; };
+		0F597139214B91B100E7954B /* NSImage+SV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+SV.m"; sourceTree = "<group>"; };
 		0F8BF8EB212E461B00A74C09 /* LeNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8BF8EE212E461B00A74C09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0F8BF8EF212E461B00A74C09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -73,6 +107,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0F0F037D214B8011005033E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F8BF8E8212E461B00A74C09 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,6 +124,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F0F0381214B8011005033E7 /* LenetMac */ = {
+			isa = PBXGroup;
+			children = (
+				0F59712B214B847E00E7954B /* utils */,
+				0F0F0382214B8011005033E7 /* AppDelegate.h */,
+				0F0F0383214B8011005033E7 /* AppDelegate.m */,
+				0F0F0385214B8011005033E7 /* ViewController.h */,
+				0F0F0386214B8011005033E7 /* ViewController.mm */,
+				0F0F0388214B8013005033E7 /* Assets.xcassets */,
+				0F0F038A214B8013005033E7 /* Main.storyboard */,
+				0F0F038D214B8013005033E7 /* Info.plist */,
+				0F0F038E214B8013005033E7 /* main.m */,
+				0F0F0390214B8014005033E7 /* LenetMac.entitlements */,
+			);
+			path = LenetMac;
+			sourceTree = "<group>";
+		};
+		0F59712B214B847E00E7954B /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				0F597138214B91B100E7954B /* NSImage+SV.h */,
+				0F597139214B91B100E7954B /* NSImage+SV.m */,
+				0F59712F214B84B200E7954B /* SVAnalysisGraphView.h */,
+				0F59712C214B84B200E7954B /* SVAnalysisGraphView.m */,
+				0F59712E214B84B200E7954B /* SVBasicGraphView.h */,
+				0F59712D214B84B200E7954B /* SVBasicGraphView.m */,
+				0F597135214B8F1300E7954B /* SVUtils.h */,
+				0F597136214B8F1300E7954B /* SVUtils.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		0F8BF8E2212E461B00A74C09 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +167,7 @@
 				0F8BF913212E48D900A74C09 /* SVCNNViewController.mm */,
 				0F8BF914212E48DA00A74C09 /* UI_Template */,
 				0F8BF8ED212E461B00A74C09 /* LeNet */,
+				0F0F0381214B8011005033E7 /* LenetMac */,
 				0F8BF8EC212E461B00A74C09 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				0F8BF8EB212E461B00A74C09 /* LeNet.app */,
+				0F0F0380214B8011005033E7 /* LenetMac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,6 +266,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0F0F037F214B8011005033E7 /* LenetMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F0F0393214B8014005033E7 /* Build configuration list for PBXNativeTarget "LenetMac" */;
+			buildPhases = (
+				0F0F037C214B8011005033E7 /* Sources */,
+				0F0F037D214B8011005033E7 /* Frameworks */,
+				0F0F037E214B8011005033E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LenetMac;
+			productName = LenetMac;
+			productReference = 0F0F0380214B8011005033E7 /* LenetMac.app */;
+			productType = "com.apple.product-type.application";
+		};
 		0F8BF8EA212E461B00A74C09 /* LeNet */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F8BF901212E461E00A74C09 /* Build configuration list for PBXNativeTarget "LeNet" */;
@@ -217,6 +309,9 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = ShenWei;
 				TargetAttributes = {
+					0F0F037F214B8011005033E7 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
 					0F8BF8EA212E461B00A74C09 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -236,11 +331,25 @@
 			projectRoot = "";
 			targets = (
 				0F8BF8EA212E461B00A74C09 /* LeNet */,
+				0F0F037F214B8011005033E7 /* LenetMac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0F0F037E214B8011005033E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F59713C214BB1C500E7954B /* train-images.idx3-ubyte in Resources */,
+				0F0F0389214B8013005033E7 /* Assets.xcassets in Resources */,
+				0F59713B214BB1C200E7954B /* train-labels.idx1-ubyte in Resources */,
+				0F59713D214BB1C800E7954B /* t10k-labels.idx1-ubyte in Resources */,
+				0F0F038C214B8013005033E7 /* Main.storyboard in Resources */,
+				0F59713E214BB1CA00E7954B /* t10k-images.idx3-ubyte in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F8BF8E9212E461B00A74C09 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,6 +367,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0F0F037C214B8011005033E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F597133214B8D1900E7954B /* SVCNNLayer.cpp in Sources */,
+				0F0F0387214B8011005033E7 /* ViewController.mm in Sources */,
+				0F0F038F214B8013005033E7 /* main.m in Sources */,
+				0F597130214B84B200E7954B /* SVAnalysisGraphView.m in Sources */,
+				0F0F0384214B8011005033E7 /* AppDelegate.m in Sources */,
+				0F597131214B84B200E7954B /* SVBasicGraphView.m in Sources */,
+				0F59713F214BB1F700E7954B /* MnistDecoder.m in Sources */,
+				0F597137214B8F1300E7954B /* SVUtils.m in Sources */,
+				0F59713A214B91B100E7954B /* NSImage+SV.m in Sources */,
+				0F597132214B8D0B00E7954B /* SVCNNNetWork.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F8BF8E7212E461B00A74C09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,6 +409,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0F0F038A214B8013005033E7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F0F038B214B8013005033E7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		0F8BF8F4212E461C00A74C09 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -302,6 +436,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0F0F0391214B8014005033E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LenetMac/LenetMac.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9CM4JXG8XM;
+				INFOPLIST_FILE = LenetMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sv.LenetMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0F0F0392214B8014005033E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LenetMac/LenetMac.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9CM4JXG8XM;
+				INFOPLIST_FILE = LenetMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sv.LenetMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		0F8BF8FF212E461E00A74C09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -449,6 +625,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0F0F0393214B8014005033E7 /* Build configuration list for PBXNativeTarget "LenetMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F0F0391214B8014005033E7 /* Debug */,
+				0F0F0392214B8014005033E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0F8BF8E6212E461B00A74C09 /* Build configuration list for PBXProject "LeNet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
